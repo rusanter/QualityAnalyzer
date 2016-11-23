@@ -52,7 +52,7 @@ class PDepend extends Handler implements RequiresCoverage
             $options[] = '--ignore=' . implode(',', $project->excludes);
         }
 
-        $this->shell->exec('vendor/bin/pdepend', array_merge($options, array($project->baseDir)));
+        $this->shell->exec($project->binDir.'/pdepend', array_merge($options, array($project->baseDir)));
         return $tmpFile;
     }
 }

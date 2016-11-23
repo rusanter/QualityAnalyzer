@@ -48,7 +48,7 @@ class Phploc extends Handler
             $options[] = '--exclude=' . $exclude;
         }
 
-        $this->shell->exec('vendor/bin/phploc', array_merge($options, array($project->baseDir)));
+        $this->shell->exec($project->binDir.'/phploc', array_merge($options, array($project->baseDir)));
         return $tmpFile;
     }
 }

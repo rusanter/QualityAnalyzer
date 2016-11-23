@@ -49,7 +49,7 @@ class PHPMD extends Handler
         }
 
         $this->shell->exec(
-            'vendor/bin/phpmd',
+            $project->binDir.'/phpmd',
             array_merge($options, array($project->baseDir, 'xml', 'cleancode,codesize,design')),
             array(0, 2)
         );

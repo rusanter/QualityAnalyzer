@@ -14,6 +14,7 @@ class Analyze extends Command
 {
     const ARGUMENT_PATH            = 'path';
     const NAME                     = 'analyze';
+    const OPTION_BIN_DIR           = 'bin-dir';
     const OPTION_COVERAGE          = 'coverage';
     const OPTION_EXCLUDE_ANALYZERS = 'exclude_analyzers';
     const OPTION_PDEPEND           = 'pdepend';
@@ -55,6 +56,11 @@ class Analyze extends Command
                 self::ARGUMENT_PATH,
                 InputArgument::REQUIRED,
                 'Path to the source code which should be analyzed'
+            )->addOption(
+                self::OPTION_BIN_DIR,
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Path to binaries dir'
             )->addOption(
                 self::OPTION_COVERAGE,
                 self::ALIAS_COVERAGE,
@@ -120,6 +126,7 @@ class Analyze extends Command
         $project = new Project();
         $project->dataDir = $this->targetDir;
         $project->baseDir = $path;
+        $project->binDir = $input->getOption(self::OPTION_BIN_DIR) ?: 'vendor/bin';
         if ($input->hasOption(self::OPTION_COVERAGE)) {
             $project->coverage = $input->getOption(self::OPTION_COVERAGE);
         }

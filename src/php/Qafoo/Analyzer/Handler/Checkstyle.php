@@ -49,7 +49,7 @@ class Checkstyle extends Handler
             $options[] = '--ignore=' . implode(',', $project->excludes);
         }
 
-        $this->shell->exec('vendor/bin/phpcs', array_merge($options, array($project->baseDir)), array(0, 1));
+        $this->shell->exec($project->binDir.'/phpcs', array_merge($options, array($project->baseDir)), array(0, 1));
         return $tmpFile;
     }
 }
