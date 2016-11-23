@@ -5,6 +5,7 @@
     "require":      {
         "php": ">=5.5.0",
         "ext-zip": "*",
+        "escapestudios/symfony2-coding-standard": "^2.0",
         "phpmd/phpmd": "@stable",
         "pdepend/pdepend": "@stable",
         "phploc/phploc": "^2.1",
