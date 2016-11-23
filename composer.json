@@ -1,5 +1,5 @@
 {
-    "name":         "qafoo/quality-analyzer",
+    "name":         "rusanter/quality-analyzer",
     "description":  "Helper for code reviews",
     "license":      "AGPL-3.0",
     "require":      {
