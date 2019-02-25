@@ -42,7 +42,7 @@ class Checkstyle extends Handler
         $options = array(
             '--standard=vendor/escapestudios/symfony2-coding-standard/Symfony2',
             '--extensions=php',
-            '--report-checkstyle=' . ($tmpFile = $this->shell->getTempFile()),
+            '--report-checkstyle=' . ($tmpFile = $this->shell->getTempFile('qa', 'xml')),
         );
 
         if ($project->excludes) {

@@ -51,6 +51,7 @@ let Loader = React.createClass({
                 var deferred = jQuery.Deferred()
 
                 switch (contentType) {
+                case 'text/xml':
                 case 'application/xml':
                     var parser = new xml2js.Parser()
 
@@ -73,7 +74,7 @@ let Loader = React.createClass({
                     break
 
                 default:
-                    console.error("Cannot handle data of type:" + contentType)
+                    console.error("Cannot handle data of type " + contentType + " while loading " + file)
                 }
 
                 return deferred.promise()

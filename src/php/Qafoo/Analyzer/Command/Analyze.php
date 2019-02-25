@@ -116,8 +116,6 @@ class Analyze extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $exclude = array_filter(array_map('trim', explode(',', $input->getOption(self::OPTION_EXCLUDE))));
-
         if (!is_dir($path = realpath($input->getArgument(self::ARGUMENT_PATH)))) {
             throw new \OutOfBoundsException("Could not find " . $input->getArgument(self::ARGUMENT_PATH));
         }
@@ -127,6 +125,9 @@ class Analyze extends Command
         $project->dataDir = $this->targetDir;
         $project->baseDir = $path;
         $project->binDir = $input->getOption(self::OPTION_BIN_DIR) ?: 'vendor/bin';
+        if ($input->hasOption(self::OPTION_EXCLUDE)) {
+            $project->excludes = array_filter(array_map('trim', explode(',', $input->getOption(self::OPTION_EXCLUDE))));
+        }
         if ($input->hasOption(self::OPTION_COVERAGE)) {
             $project->coverage = $input->getOption(self::OPTION_COVERAGE);
         }
